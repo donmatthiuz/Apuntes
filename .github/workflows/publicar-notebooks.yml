@@ -2,8 +2,6 @@ name: Publicar Notebooks
 
 on:
   push:
-    branches:
-      - DAC-Analista-challenge
   workflow_dispatch:
 
 jobs:
@@ -11,32 +9,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout del repo
+      # 1. Descargar el código
       - name: Checkout del código
         uses: actions/checkout@v3
 
-      # 2. Buscar todos los .ipynb
-      - name: Listar archivos .ipynb
-        id: notebooks
-        run: |
-          notebooks=$(find . -type f -name "*.ipynb")
-          echo "Encontrados:"
-          echo "$notebooks"
-          echo "::set-output name=lista::$notebooks"
+      # 2. Instalar Jupyter para convertir los notebooks
+      - name: Instalar Jupyter
+        run: pip install jupyter
 
-      # 3. Publicar cada notebook (ejemplo: subir a GitHub Pages o convertir)
-      - name: Publicar notebooks
+      # 3. Buscar todos los notebooks y convertirlos a HTML
+      - name: Convertir notebooks a HTML
         run: |
-          for nb in ${{ steps.notebooks.outputs.lista }}; do
+          for nb in $(find . -type f -name "*.ipynb"); do
             echo "📢 Publicando $nb ..."
-            # Aquí va el comando para "publicar"
-            # Ejemplo: convertir a HTML
             jupyter nbconvert --to html "$nb"
           done
 
-      # 4. (Opcional) Subir resultados a Pages o a un branch
-      - name: Deploy a GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .
+      # 4. Hacer commit de los HTML generados en la branch actual (por defecto será main si trabajas ahí)
+      - name: Commit y push
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "actions@github.com"
+          git add *.html || true
+          git commit -m "Publicar notebooks convertidos" || echo "Sin cambios"
+          git push origin HEAD
