@@ -1,0 +1,42 @@
+name: Publicar Notebooks
+
+on:
+  push:
+    branches:
+      - DAC-Analista-challenge
+  workflow_dispatch:
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout del repo
+      - name: Checkout del código
+        uses: actions/checkout@v3
+
+      # 2. Buscar todos los .ipynb
+      - name: Listar archivos .ipynb
+        id: notebooks
+        run: |
+          notebooks=$(find . -type f -name "*.ipynb")
+          echo "Encontrados:"
+          echo "$notebooks"
+          echo "::set-output name=lista::$notebooks"
+
+      # 3. Publicar cada notebook (ejemplo: subir a GitHub Pages o convertir)
+      - name: Publicar notebooks
+        run: |
+          for nb in ${{ steps.notebooks.outputs.lista }}; do
+            echo "📢 Publicando $nb ..."
+            # Aquí va el comando para "publicar"
+            # Ejemplo: convertir a HTML
+            jupyter nbconvert --to html "$nb"
+          done
+
+      # 4. (Opcional) Subir resultados a Pages o a un branch
+      - name: Deploy a GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
