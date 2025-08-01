@@ -7911,6 +7911,196 @@ $$</p>
 </div>
 </div>
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d72184be">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="Clase-31.07">Clase 31.07<a class="anchor-link" href="#Clase-31.07">¶</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4ffb284d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="Fundamentos-para-la-optimizaci%C3%B3n-unidimensional-(1D)">Fundamentos para la optimización unidimensional (1D)<a class="anchor-link" href="#Fundamentos-para-la-optimizaci%C3%B3n-unidimensional-(1D)">¶</a></h1><h2 id="Unimodalidad">Unimodalidad<a class="anchor-link" href="#Unimodalidad">¶</a></h2><p>Una función es <strong>unimodal</strong> si dentro de un intervalo cerrado $[a, b]$ presenta <strong>un único mínimo local</strong>, que en este caso también es mínimo global en ese intervalo. Es decir, si aplicamos un algoritmo de optimización, éste siempre convergerá a ese único mínimo.</p>
+<blockquote>
+<p><strong>Unimodal</strong> entonces sabemos que hay un mínimo; entonces si aplico un algoritmo sobre eso va a llegar a un único mínimo posible dentro de un intervalo entre $a$ y $b$.</p>
+</blockquote>
+<p>Sin embargo, una función puede no ser unimodal en todo su dominio:</p>
+<blockquote>
+<p>Obvio la función completa no es unimodal, pero respecto al único intervalo se vuelve unimodal y se trabaja en otro intervalo. Realmente, el unimodal es en un intervalo.</p>
+</blockquote>
+<p>Además, incluso si la función presenta <strong>picos, saltos o discontinuidades</strong>, puede ser considerada unimodal dentro del intervalo si presenta un solo mínimo:</p>
+<blockquote>
+<p>Las funciones pueden ser unimodales con picos o saltos, pero esto no le interesa [al algoritmo], incluso si no es continua. Sino el punto donde hay un mínimo, la función puede ser unimodal.</p>
+</blockquote>
+<p>Esto es clave porque algunos algoritmos de optimización exigen esta propiedad:</p>
+<blockquote>
+<p>Esto es importante porque el algoritmo a ver pide que sea unimodal, un solo mínimo. El proceso es esbozar la gráfica y darse una idea de dónde está el mínimo para aplicarlo.</p>
+</blockquote>
+<h3 id="Bimodalidad-y-multimodalidad">Bimodalidad y multimodalidad<a class="anchor-link" href="#Bimodalidad-y-multimodalidad">¶</a></h3><p>Una función es <strong>bimodal</strong> si presenta <strong>dos mínimos locales distintos</strong>. Se extiende a <strong>multimodal</strong> cuando tiene más de dos mínimos locales.</p>
+<blockquote>
+<p><strong>Bimodal:</strong> dos puntos locales
+<strong>Multimodal:</strong> múltiples mínimos o máximos locales</p>
+</blockquote>
+<p>En estos casos, los algoritmos de búsqueda de mínimos pueden <strong>converger a diferentes resultados</strong> dependiendo del punto de inicio o del intervalo seleccionado. Por eso se busca acotar la función a un intervalo donde sea unimodal.</p>
+<h2 id="Algoritmos-de-optimizaci%C3%B3n-1D">Algoritmos de optimización 1D<a class="anchor-link" href="#Algoritmos-de-optimizaci%C3%B3n-1D">¶</a></h2><p>A diferencia de métodos para encontrar ceros de funciones, los algoritmos de optimización 1D buscan <strong>el mínimo</strong> de una función en un intervalo dado.</p>
+<blockquote>
+<p>En lugar de darme los ceros, me darán el mínimo de la función con un intervalo de trabajo o un punto inicial. Dependiendo del algoritmo puede que pidamos que sea unimodal, diferenciable o que tenga su derivada.</p>
+</blockquote>
+<p>Se estudian métodos que permiten obtener estos mínimos eficientemente, sin calcular derivadas (en algunos casos) ni hacer búsquedas exhaustivas.</p>
+<h2 id="Receta-general-para-m%C3%A9todos-de-optimizaci%C3%B3n-1D">Receta general para métodos de optimización 1D<a class="anchor-link" href="#Receta-general-para-m%C3%A9todos-de-optimizaci%C3%B3n-1D">¶</a></h2><p>Para aplicar cualquier método de optimización unidimensional se necesita:</p>
+<ol>
+<li><strong>Intervalo o punto inicial:</strong> Indica dónde se buscará el mínimo.</li>
+<li><strong>Ecuación de actualización:</strong> Define cómo se generan nuevos puntos.</li>
+<li><strong>Criterio de paro:</strong> Por número máximo de iteraciones o tolerancia.</li>
+</ol>
+<blockquote>
+<p>Esto trata para meter algoritmos de funciones para saber estos mínimos...</p>
+</blockquote>
+<h2 id="M%C3%A9todo-de-la-Raz%C3%B3n-%C3%81urea-(Golden-Section-Search)">Método de la Razón Áurea (Golden Section Search)<a class="anchor-link" href="#M%C3%A9todo-de-la-Raz%C3%B3n-%C3%81urea-(Golden-Section-Search)">¶</a></h2><h3 id="%C2%BFPor-qu%C3%A9-%22raz%C3%B3n-%C3%A1urea%22?">¿Por qué "razón áurea"?<a class="anchor-link" href="#%C2%BFPor-qu%C3%A9-%22raz%C3%B3n-%C3%A1urea%22?">¶</a></h3><blockquote>
+<p>Por ejemplo, $(1 + \sqrt{5}) / 2 \approx 1.618$. Tienen que ver con la proporción áurea, un valor relacionado al Renacimiento, Fibonacci, etc.
+Esto se llama así porque en una parte del algoritmo aparece este número.</p>
+</blockquote>
+<h3 id="Objetivo">Objetivo<a class="anchor-link" href="#Objetivo">¶</a></h3><p>Minimizar una función $f: [a, b] \to \mathbb{R}$, que sea <strong>unimodal</strong> en $[a, b]$.</p>
+<h3 id="Esquema-del-algoritmo">Esquema del algoritmo<a class="anchor-link" href="#Esquema-del-algoritmo">¶</a></h3><blockquote>
+<p>Si no lo es [unimodal], nuestro trabajo es acortar el intervalo donde sí lo sea.</p>
+</blockquote>
+<p>Se parte del intervalo inicial $[a_0, b_0]$ y se escogen dos nuevos puntos:</p>
+<p>$$
+a_1 = c, \quad b_1 = d
+$$</p>
+<blockquote>
+<p>La condición es que debe haber simetría entre la distancia $a_0 - a_1$ y $b_0 - b_1$, es decir, simétrico en esas distancias.</p>
+</blockquote>
+<p>Estos puntos se colocan usando una proporción $p &lt; \frac{1}{2}$, típicamente:</p>
+<p>$$
+p = \frac{\sqrt{5} - 1}{2}
+$$</p>
+<p>De modo que:</p>
+<p>$$
+c = b - (b - a)\cdot p, \quad d = a + (b - a)\cdot p
+$$</p>
+<p>Luego:</p>
+<ul>
+<li>Si $f(c) &lt; f(d)$, el mínimo está en $[a, d]$</li>
+<li>Si $f(c) &gt; f(d)$, el mínimo está en $[c, b]$</li>
+</ul>
+<blockquote>
+<p>Estos dos nuevos puntos lo que me indican es elegir un nuevo lugar de trabajo más pequeño que el original.</p>
+</blockquote>
+<h3 id="Algoritmo-en-pseudoc%C3%B3digo">Algoritmo en pseudocódigo<a class="anchor-link" href="#Algoritmo-en-pseudoc%C3%B3digo">¶</a></h3><div class="highlight"><pre><span></span>Algoritmo:<span class="w"> </span><span class="o">(</span>Golden<span class="w"> </span>search<span class="o">)</span>
+Inputs:<span class="w"> </span><span class="o">[</span>a₀,<span class="w"> </span>b₀<span class="o">]</span>:<span class="w"> </span>intervalo<span class="w"> </span>de<span class="w"> </span>búsqueda.
+Outputs:<span class="w"> </span>x<span class="w"> </span>mínimo<span class="w"> </span>global<span class="w"> </span>de<span class="w"> </span>f<span class="w"> </span>en<span class="w"> </span><span class="o">[</span>a₀,<span class="w"> </span>b₀<span class="o">]</span>.
+
+For<span class="w"> </span><span class="nv">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>,<span class="w"> </span><span class="m">1</span>,<span class="w"> </span><span class="m">2</span>,<span class="w"> </span>...<span class="w"> </span>hasta<span class="w"> </span>que<span class="w"> </span>se<span class="w"> </span>cumpla<span class="w"> </span>criterio<span class="w"> </span>de<span class="w"> </span>paro:
+<span class="w">    </span><span class="nv">cₖ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>bₖ<span class="w"> </span>−<span class="w"> </span><span class="o">(</span>bₖ<span class="w"> </span>−<span class="w"> </span>aₖ<span class="o">)(</span>√5−1<span class="o">)</span>/2<span class="w">  </span>
+<span class="w">    </span><span class="nv">dₖ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>aₖ<span class="w"> </span>+<span class="w"> </span><span class="o">(</span>bₖ<span class="w"> </span>−<span class="w"> </span>aₖ<span class="o">)(</span>√5−1<span class="o">)</span>/2
+
+<span class="w">    </span>xₖ₊₁<span class="w"> </span><span class="o">=</span><span class="w"> </span>½<span class="o">(</span>cₖ<span class="w"> </span>+<span class="w"> </span>dₖ<span class="o">)</span>
+
+<span class="w">    </span>If<span class="w"> </span>f<span class="o">(</span>cₖ<span class="o">)</span><span class="w"> </span>&lt;<span class="w"> </span>f<span class="o">(</span>dₖ<span class="o">)</span>:
+<span class="w">        </span>aₖ₊₁<span class="w"> </span><span class="o">=</span><span class="w"> </span>aₖ,<span class="w"> </span>bₖ₊₁<span class="w"> </span><span class="o">=</span><span class="w"> </span>dₖ
+<span class="w">    </span>Else:
+<span class="w">        </span>aₖ₊₁<span class="w"> </span><span class="o">=</span><span class="w"> </span>cₖ,<span class="w"> </span>bₖ₊₁<span class="w"> </span><span class="o">=</span><span class="w"> </span>bₖ
+
+Return<span class="w"> </span>xₖ₊₁
+</pre></div>
+<h3 id="C%C3%B3digo-en-Python">Código en Python<a class="anchor-link" href="#C%C3%B3digo-en-Python">¶</a></h3><p>(ya lo incluías, no se modifica)</p>
+<h2 id="Interpolaci%C3%B3n-Parab%C3%B3lica">Interpolación Parabólica<a class="anchor-link" href="#Interpolaci%C3%B3n-Parab%C3%B3lica">¶</a></h2><h3 id="Motivaci%C3%B3n">Motivación<a class="anchor-link" href="#Motivaci%C3%B3n">¶</a></h3><p>Supongamos una parábola:</p>
+<p>$$
+f(x) = ax^2 + bx + c
+$$</p>
+<p>El mínimo de esa parábola (si $a &gt; 0$) está en:</p>
+<p>$$
+x = -\frac{b}{2a}
+$$</p>
+<blockquote>
+<p>Esto nos sirve para entender el segundo algoritmo "Interpolación parabólica".</p>
+</blockquote>
+<h3 id="%C2%BFC%C3%B3mo-se-construye-la-par%C3%A1bola?">¿Cómo se construye la parábola?<a class="anchor-link" href="#%C2%BFC%C3%B3mo-se-construye-la-par%C3%A1bola?">¶</a></h3><blockquote>
+<p>Le doy tres puntos: $x_0$, $x_1$, $x_2$ y sus respectivos $y_i = f(x_i)$.
+Entonces construimos una parábola que pase por esos tres puntos.</p>
+</blockquote>
+<p>Una función cuadrática es suficiente para pasar por tres puntos distintos. Si esos puntos son cercanos al mínimo, entonces <strong>la parábola se aproxima a la función</strong> cerca del mínimo real.</p>
+<h3 id="Sistema-de-ecuaciones-lineal">Sistema de ecuaciones lineal<a class="anchor-link" href="#Sistema-de-ecuaciones-lineal">¶</a></h3><p>Buscamos los coeficientes $a_k$, $b_k$, $c_k$ de la parábola:</p>
+<p>$$
+f(x) = a_k x^2 + b_k x + c_k
+$$</p>
+<p>Dado:</p>
+<p>$$
+(x_k, f(x_k)), \quad (x_{k+1}, f(x_{k+1})), \quad (x_{k+2}, f(x_{k+2}))
+$$</p>
+<p>El sistema se representa como:</p>
+<p>$$
+\begin{pmatrix}
+1 &amp; x_k     &amp; x_k^2     \\
+1 &amp; x_{k+1} &amp; x_{k+1}^2 \\
+1 &amp; x_{k+2} &amp; x_{k+2}^2
+\end{pmatrix}
+\begin{pmatrix}
+c_k \\
+b_k \\
+a_k
+\end{pmatrix}
+=
+\begin{pmatrix}
+f(x_k) \\
+f(x_{k+1}) \\
+f(x_{k+2})
+\end{pmatrix}
+$$</p>
+<h3 id="Alternativa:-F%C3%B3rmulas-expl%C3%ADcitas">Alternativa: Fórmulas explícitas<a class="anchor-link" href="#Alternativa:-F%C3%B3rmulas-expl%C3%ADcitas">¶</a></h3><blockquote>
+<p>O simplemente se pueden quemar las fórmulas:</p>
+</blockquote>
+<p>$$
+\begin{aligned}
+c_k &amp;= \frac{(x_{k+1} - x_{k+2})f(x_k) + (x_{k+2} - x_k)f(x_{k+1}) + (x_k - x_{k+1})f(x_{k+2})}
+{(x_k - x_{k+1})(x_{k+1} - x_{k+2})(x_{k+2} - x_k)} \\
+\\
+b_k &amp;= \frac{(x_{k+1}^2 - x_{k+2}^2)f(x_k) + (x_{k+2}^2 - x_k^2)f(x_{k+1}) + (x_k^2 - x_{k+1}^2)f(x_{k+2})}
+{(x_k - x_{k+1})(x_{k+1} - x_{k+2})(x_{k+2} - x_k)} \\
+\\
+a_k &amp;= \frac{(x_{k+1}x_{k+2}^2 - x_{k+2}x_{k+1}^2)f(x_k) + (x_{k+2}x_k^2 - x_kx_{k+2}^2)f(x_{k+1}) + (x_kx_{k+1}^2 - x_{k+1}x_k^2)f(x_{k+2})}
+{(x_k - x_{k+1})(x_{k+1} - x_{k+2})(x_{k+2} - x_k)}
+\end{aligned}
+$$</p>
+<h3 id="Validaci%C3%B3n">Validación<a class="anchor-link" href="#Validaci%C3%B3n">¶</a></h3><p>Antes de calcular el nuevo $x = -b_k / 2a_k$, es fundamental verificar que:</p>
+<blockquote>
+<p>$a_k &gt; 0$. Si no, entonces el mínimo no está bien definido (la parábola se abre hacia abajo) → se debe lanzar error o cambiar puntos.</p>
+</blockquote>
+<h2 id="M%C3%A9todo-de-Newton-para-Optimizaci%C3%B3n">Método de Newton para Optimización<a class="anchor-link" href="#M%C3%A9todo-de-Newton-para-Optimizaci%C3%B3n">¶</a></h2><h3 id="Fundamento">Fundamento<a class="anchor-link" href="#Fundamento">¶</a></h3><blockquote>
+<p>Recordando Newton para ceros:</p>
+</blockquote>
+<p>$$
+x_{k+1} = x_k - \frac{f(x_k)}{f'(x_k)}
+$$</p>
+<p>Ahora queremos encontrar el <strong>mínimo</strong> de $f$, lo cual ocurre cuando $f'(x) = 0$. Entonces, buscamos ceros de la derivada:</p>
+<blockquote>
+<p>Entonces si quiero el mínimo $f'(x) = 0$, es decir, $x$ es mínimo de $f$, se debe cumplir lo anterior.</p>
+</blockquote>
+<p>Aplicamos Newton <strong>a la derivada</strong>:</p>
+<p>$$
+x_{k+1} = x_k - \frac{f'(x_k)}{f''(x_k)}
+$$</p>
+<p>Este método converge rápidamente cuando se cumplen las condiciones necesarias, pero:</p>
+<blockquote>
+<p>Tendremos las mismas desventajas de Newton: derivada igual a cero, ciclos, divergencia, etc.</p>
+</blockquote>
+<h3 id="Observaci%C3%B3n">Observación<a class="anchor-link" href="#Observaci%C3%B3n">¶</a></h3><blockquote>
+<p>Sirve también para encontrar <strong>máximos</strong> si el segundo derivado es negativo, pero aquí lo usamos para mínimos.</p>
+</blockquote>
+<p>El resto del código y estructura ya lo habías puesto completo y está bien.</p>
+</div>
+</div>
+</div>
+</div>
 </main>
 </body>
 </html>
