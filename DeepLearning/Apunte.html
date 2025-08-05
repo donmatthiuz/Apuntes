@@ -7820,13 +7820,50 @@ $$</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=bd635950">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=152fd1b1">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>El problema de esto es eso mismo ,</p>
+<p>¡Claro, Mathew! Aquí tienes una <strong>descripción sencilla y clara de cada optimizador</strong>, con su propósito y características principales:</p>
+<hr/>
+<h2 id="%E2%9A%99%EF%B8%8F-Optimizadores-m%C3%A1s-usados-en-Deep-Learning">⚙️ <strong>Optimizadores más usados en Deep Learning</strong><a class="anchor-link" href="#%E2%9A%99%EF%B8%8F-Optimizadores-m%C3%A1s-usados-en-Deep-Learning">¶</a></h2><hr/>
+<h3 id="1.-SGD-(Stochastic-Gradient-Descent)">1. <strong>SGD (Stochastic Gradient Descent)</strong><a class="anchor-link" href="#1.-SGD-(Stochastic-Gradient-Descent)">¶</a></h3><p><strong>Descripción:</strong>
+Es el optimizador más básico. Actualiza los pesos del modelo usando el gradiente del error calculado en un mini-lote (batch) de datos.
+<strong>Ventaja:</strong> Simple y rápido en problemas pequeños.
+<strong>Desventaja:</strong> Puede ser lento para converger y quedarse atrapado en mínimos locales.</p>
+<hr/>
+<h3 id="2.-SGD-con-Momentum">2. <strong>SGD con Momentum</strong><a class="anchor-link" href="#2.-SGD-con-Momentum">¶</a></h3><p><strong>Descripción:</strong>
+Mejora a SGD añadiendo una “inercia” al movimiento de los pesos. Así, si el gradiente sigue apuntando en la misma dirección, el optimizador va ganando velocidad.
+<strong>Ventaja:</strong> Acelera la convergencia y reduce oscilaciones.
+<strong>Desventaja:</strong> Todavía necesita ajustar bien el learning rate.</p>
+<hr/>
+<h3 id="3.-Adagrad">3. <strong>Adagrad</strong><a class="anchor-link" href="#3.-Adagrad">¶</a></h3><p><strong>Descripción:</strong>
+Adapta automáticamente la tasa de aprendizaje para cada parámetro según cuántas veces se actualizó. Parámetros que se actualizan mucho, reducen su paso.
+<strong>Ventaja:</strong> Bueno para datos escasos (por ejemplo, NLP).
+<strong>Desventaja:</strong> El learning rate puede volverse tan pequeño que el modelo deja de aprender.</p>
+<hr/>
+<h3 id="4.-RMSProp">4. <strong>RMSProp</strong><a class="anchor-link" href="#4.-RMSProp">¶</a></h3><p><strong>Descripción:</strong>
+Corrige el problema de Adagrad usando una media móvil de los gradientes pasados. Mantiene una tasa de aprendizaje razonable a lo largo del tiempo.
+<strong>Ventaja:</strong> Muy útil en redes recurrentes (RNNs).
+<strong>Desventaja:</strong> Puede requerir ajuste fino de hiperparámetros.</p>
+<hr/>
+<h3 id="5.-Adam-(Adaptive-Moment-Estimation)">5. <strong>Adam (Adaptive Moment Estimation)</strong><a class="anchor-link" href="#5.-Adam-(Adaptive-Moment-Estimation)">¶</a></h3><p><strong>Descripción:</strong>
+Es uno de los optimizadores más usados. Combina la idea de momentum (velocidad) con la adaptación del learning rate (como RMSProp).
+<strong>Ventaja:</strong> Rápido, estable y funciona bien en la mayoría de los casos.
+<strong>Desventaja:</strong> Puede no generalizar tan bien si no se ajusta el <code>learning rate</code>.</p>
+<hr/>
+<h3 id="6.-AdamW">6. <strong>AdamW</strong><a class="anchor-link" href="#6.-AdamW">¶</a></h3><p><strong>Descripción:</strong>
+Es una mejora de Adam que maneja mejor la regularización (weight decay), especialmente útil en modelos grandes como Transformers.
+<strong>Ventaja:</strong> Mejor generalización y resultados más estables.
+<strong>Desventaja:</strong> Requiere más memoria que SGD.</p>
+<hr/>
+<h3 id="7.-Nadam-(Nesterov-accelerated-Adam)">7. <strong>Nadam (Nesterov-accelerated Adam)</strong><a class="anchor-link" href="#7.-Nadam-(Nesterov-accelerated-Adam)">¶</a></h3><p><strong>Descripción:</strong>
+Es una versión de Adam que añade la aceleración de Nesterov, anticipando el próximo paso.
+<strong>Ventaja:</strong> Puede acelerar el aprendizaje en algunos problemas.
+<strong>Desventaja:</strong> No siempre mejora respecto a Adam.</p>
+<hr/>
 </div>
 </div>
 </div>
