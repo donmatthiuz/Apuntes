@@ -7679,6 +7679,30 @@ $$</p>
 </div>
 </div>
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8a768d3f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="Clase-1108">Clase 1108<a class="anchor-link" href="#Clase-1108">¶</a></h1><p>Sistema de coordenadas definen la posicion relacionado a la posicion de la tierra para determinar un punto en la superifcio de la tierra, y estos parametros se asociando  a codigo ESPG, es un sistema de coordenadas que utiliza una superficie esferica tridimensional con serie de puntos sobre la superficie terrestre con 3 puntos, polos norte y sur y el centro (ecuador) en base a esto se construyen latitud y longitud:</p>
+<p>lineas paralelas de ecuadaor son medias y del winwitch son los de la longitud, esto se usa para esto:</p>
+<p>al designar coordenadas primero va latirud y luego longitud y esto esta con formato segagesimal:</p>
+<p>grados minutos y segundos´, pero puede colocarse en formato decimal, esto hace que las regiones esten en 2 cuadrantes para guatemala.</p>
+<p>es complejo encontrar lugares por ubicaciones especiales, entonces se obtuvo el wgs84 es una serie de coordenadas graficas para hacer cualquier proyeccion cilindrica equisidstante sencilla</p>
+<p>guatemala esta representada en 2 mosaicos, un geojson permite hacer todo esto obteniendo todas las coordenadas</p>
+<p>la tierra es una figura geometrica elipsoide y cuando se proyecta en un plano hay deformaciones que afecta direcciones, etc entonces se debe de realizar para hacer mapas, con 2 direcciones para wgs84 pero al proyectarlo en UTML el punto se mueve, la latitud y longitud en wgs84 y metricas en el plano.</p>
+<p>existen 3 formas de proyecciones, es hacer un cilindro, cono o superficie plana, estos planos generan una familia de proyeccion cartografica, todo el mundo usa UTM pero en guatemala es GTM (es decir que se quiere pegar mapas de carretera entonces la vectoriales no casan y esta es universal, transverlas de mercator)</p>
+<p>en proyeccion utm groenlandia se mira mas grande que estados unidos, entonces la proyeccion utm se separa en zonas,  esto se expresa en metros y en coordenadas cilindricas cambia de tamaño,  al alejar del ecuador afecta a las areas exagerando su tamaño, entonces cual es la diferencia entre georaficas y proyectaadas</p>
+<p>es que para que sea igual debe ser por cilindrica en un plano, porque es importante? al mezclar datos en sistemas hay error en analisis entonces con GIS:</p>
+<p>geopandas hacemos que peguen con los vectoriales y saber cuando hacerlo:</p>
+<p>se saca de rsg wsg84 se busca la zona 16 norte , de 290 a 291 la que longitudes tenemos longitud  en norte y sur pero ya que en guatemala aprox estamos en zona 15 o 16 entonces.</p>
+<p>satunal hace la conversion utm a gtm.</p>
+<p>y esto es menos complicado</p>
+</div>
+</div>
+</div>
+</div>
 </main>
 </body>
 </html>
