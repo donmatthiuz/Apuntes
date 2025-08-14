@@ -7658,6 +7658,46 @@ t5 = t3 + t4
 </div>
 </div>
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ff3d08bd">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="Clase-1308">Clase 1308<a class="anchor-link" href="#Clase-1308">¶</a></h1><p>El lenguaje de alto nivel cosas complicadas como polimorfismo, y objetos, y interfaces y cosas mas horribles como asyncronismo. Cosas de ese pinche estilo es por eso que se usa el codigo de 3 direcciones visto anteriormente.</p>
+<p>El codigo de 3 direcdciones no espera que sea eficiente. Sino que lo convierta a 3 direcciones .</p>
+<p>Esto se divide en 2 y no lo optimiza, debido a que es mucho mas dificil de optimizar de una que ya tener uno y optimizarlo</p>
+<h3 id="Operaciones-comunies">Operaciones comunies<a class="anchor-link" href="#Operaciones-comunies">¶</a></h3><ul>
+<li>Saltos con goto L,</li>
+<li>Salto condicional con operador relacional</li>
+<li>Instrucciones de copia indexada</li>
+</ul>
+<pre><code>do i = i + 1 ; whitle (a{i} &lt; v);
+</code></pre>
+<p>En codigo de 3 direcciones seria</p>
+<pre><code>L. t1 = i + 1
+i = t1
+t2 = i * 8  // se multiplica por 8porque son variables enteras, esto sirve para indicar al puntero moverse 8 unidades
+t3 = a[t2]
+if t3 &lt; v goto L
+</code></pre>
+<p>La  mejor forma es que cada linea tenga su propia etiqueta de valor</p>
+<p>Y como lo guardamos ? ,</p>
+<p>Lo que podemos hacer es usar una estructura de datos. Si se acaba la ram, si lo guardo en una estructura de datos no hay problema en la ram ya que se guarda en una posicion.</p>
+<p>Hay varias formas de estrutctura de datos, la estrcutrua de datos es cuadruplos</p>
+<p>Una tabla, con indice, operador, arg1, arg2, resultado</p>
+<p>El operador es el operador donde se ejeucta, el resultado es el temporal o variable en donde se va a guardar ,</p>
+<p>el arg 1 y arg 2 es de los 2 eejecutados.</p>
+<p>Ahora el = que se hace es si solo existe ese se ppone como operador en las demas esta implicito que se guardo en el resultado.</p>
+<p>No vamos a hacer busquedas, sino que vamos a dar un acceso secuencial , por eso se utiliza este tipo de estructura.</p>
+<p>Se llama <strong>CUADRUPLOS</strong></p>
+<p><strong>Tripleta</strong></p>
+<p>La tripleta no guarda el resultado, tipo operador, arg1, y arg2.</p>
+<p>Esto ocupa menos ram, El pedo es que es que la optimizacion es bien compleja y sevuelve mas complicada el hacer cambios</p>
+</div>
+</div>
+</div>
+</div>
 </main>
 </body>
 </html>
