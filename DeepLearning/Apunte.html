@@ -7914,6 +7914,98 @@ Esto sirve si queres reducir la cantidad de pxeles a analizar en una capa</p>
 </div>
 </div>
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6f3df356">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="ReSUMEN-2-Clase-1908">ReSUMEN 2 Clase 1908<a class="anchor-link" href="#ReSUMEN-2-Clase-1908">¶</a></h2><h3 id="Si-preguntan-porque-tanto-resumen-es-que-me-quede-dormido-en-la-clase.-xd">Si preguntan porque tanto resumen es que me quede dormido en la clase. xd<a class="anchor-link" href="#Si-preguntan-porque-tanto-resumen-es-que-me-quede-dormido-en-la-clase.-xd">¶</a></h3><p>mlp parte mas sencillas de redes neuronales</p>
+<p>ahora veremos redes convolucionales cnn</p>
+<p>recordando la clase pasada teniamos 10 clases con 284 variables de entrada,</p>
+<p>784 variables? porque porque cada pixel es independiente de los demas</p>
+<p>nosotros entendemos imagenes por trazos por contexto donde variables se representan,  como local espacial, cada pixel y esta sentado tiene sentido que los de alrededor tenga sentido para encontrar patrones interesantes</p>
+<p>problema de independencia, ejemplo altura de personas las variabels son dependientes para hacer inferencia final peroen imagenes se represetan diferentes una de otra</p>
+<p>esta información si tengo "a" pero escrita en diferente tipografia, nosotros no entendemos por pixel esta dibujado entonces es una "a" porque lo hacemos por trazaos.</p>
+<p>incluso si son por las partes debemos reconocer si es un ojo por la forma por textura por la posicion y como sabemos que es un ojo y si hay nariz labios, etc y dentro de un circulo entonces es una cara y si tiene otras caracteristicas entonces es una mujer, debemos extender esto hasta arriba para entender una raiz</p>
+<p>las redes neuronales buscan patrones cada vez más basicos como figuras texturas, etc esto lleva a un contexto mucho más grande y complejo para poder solucionarlo</p>
+<p>para entender algo en el mundo sabemos que es algo cuando hay ausencia, es decir sabemos que hay una montaña porque hay cielo, es decir limites que defines cosas de otras para convertir en otra cosa.</p>
+<p>laboratorio redes convolucionales, sencilla la idea:</p>
+<p>esta redes es para naturaleza local espacial es que tienen un contexto y al rededor al mismo tiempo dan contexto de mi propio valor, es diferente a series de tiempo</p>
+<p>existen capas de convoluciones y pooling, ess decir es la red que hace es mlp procesar la informacion con patrones relevantes conectando mlp comun para terminar un trabajo:</p>
+<p>tenemos un kernel o nucleo y me da una ponderacion de que tan importante es mi alrededor y esto dice que se da una ponderacion por ejemplo *5 y en la esquina de 0 arriba +1 abajo -1 etc y sumo todas las casillas al rededor y ese filtro es colocarlo en una esquina y esos los resumo en un solo valor, un solo pixel y mover hasta abajo 1 pixel para hacer otro proceso.</p>
+<p>tengo</p>
+<p>100  97  96
+103 101 102
+404 102 100
+y la matriz:</p>
+<p>0 -1 0
+-1 5 -100 -1 01</p>
+<p>y al hacer la combinacion lineal de 9 casillas en un solo numero:</p>
+<p>505-97-103-102-102=101
+son kernels pequeños</p>
+<p>tenemos por ejemplo:</p>
+<p>negro:0 - blanco:255</p>
+<p>pensando en el escenario:</p>
+<p>255 255 255
+255 0 0
+0 0 255</p>
+<p>las convolucion nos ayuda a encontrar bordes o ecnontrar cuando algo esta dejando de ser como el trazo en los 4 bloques de arriba o el bloque solo de la esquina abajo
+pero entonces si aplico:</p>
+<p>y aese filtro se le aplica:</p>
+<p>-1 0 1
+-1 0 1
+-1 0 1</p>
+<p>cuando las columnas de los lados son diferentes se hace 0</p>
+<p>pero sse hará en  el valor original y hace que 2 columnas sean distintos y es como un limite es decir una linea vertcial si los 2 son distintos y dibujo el patrón negro encontre una linea vertical</p>
+<p>0 al rededir y 1 al medio que hace este patron? esto no hace nada porque ahora otro por ejemplo todos unos:</p>
+<p>esto suma todos los 9 pixeles en una sola posición, que pasa si estoy en una seccion clara? se exponencia lo blanco si estoy en la oscura no pasa nada son bajos los tonos, entonces lo que hace es aumentar el brillo o contraste,</p>
+<p>ahora si el valor de todos los 9 pixeles seran 1/9 esto es un promedio y esto lleva a una version mas central de los colores haciendo un blur se verá borroso, estos son los pesos de la red, le pasamos a la red cuantos filtros y la red determinará que patron le servirá esto para determinar que filtros usar.</p>
+<p>un filtro:</p>
+<p>1 1 1
+0 0 0
+-1 -1 -1</p>
+<p>que hará? invertirá los pixeles y lo que hará es omitir las lineas verticales, dejará las horizontales, porque? y las diagonales? estas tienen una componente horizontal</p>
+<p>ya que encuentra otros patrones y no se borra del todo,</p>
+<p>porque mientras mas filtros mas complejo?</p>
+<p>ventajas de la red neuronal:</p>
+<p>sabiendo overfittiear:</p>
+<p>meansky dijo que redes de una sola capa solo puede escalar patrones lineales y con muchas capas encontramos no lineal
++volviendo a convoluciones tenemos una capa con ciertos pixeles en el medio y esto nos tira a un solo numero y en las  egunda capa:</p>
+<p>porque las capas se ponen sobre otra, entonces las primeras encuentran puntos, patrones, la otra capa algo de 27*27 y asi original, es decir encuentra cosas exponencialmente con trazos cada vez más grandes</p>
+<p>los filtros buscan la red y ver que ayudan para encontrar patrones importantes</p>
+<p>entonces:</p>
+<p>creamos una red pero en lugar de tener 10 neuronas se tienen 10 filtros 3<em>3</em>10 = 90 parametros entonces esto calcula los 10 parametros para ajustar</p>
+<p>al ajustar el filtro en la esquina y se calcula el centro , los valores de la esquina superior y izquierda se pierden porque los pixeles se ueren, normalmente a las imagenes se le colocan un paggind y el filtro es 5x5, los pixeles siguen disminuyendo, perdemos información:</p>
+<p>es malo porque  ademas tenemos un limite para que mantener la informacion más importante en lugar de recibir 728 variables puedo recibir info igual imporatne de 4*4 = 16 variables de entrada</p>
+<p>cantidad de filtros es un hiperparametro</p>
+<p>pooling operacion que resume la información de una región reduciendo su tamaño, lo que ayuda a disminuir complejidad del modelo, y hace mas robusto pequeñas varaiaciones o traslaciones en los datos obteiene le promedio o maximo, esto es para reducir cantidad de información pero maxAverage pooling o averagePoolling, es hiperparametros para decidir que me importa es decor una funcion de max o average es como una funcion de activacion y saber que tipo de pooling</p>
+<p>esto debemos de tomarlo en cuenta porque el pooling se hace que disminuya información y de tal forma hacerlo para no hacerlo para quedarnos sin información sobre capa</p>
+<p>ojo en las imagenes blanco y negro, es mas simple pero tenemos más canales en la realidad por rgb y tonalidad, entonces debemos encontrar variaciones en todos los canales
+ojo cuando parar? con max pooling si se redujo 4 veces la info? si aun se entiende entonces no fue relevantes</p>
+<p>la ultima capa es una capa parecido a droppout</p>
+<p>tenemos imagen blanco y negro -&gt; 10 filtros ahora 10 imagenes luego pooling, luego le saco 20 filtros y luego pooling iugual pero mas pequeñas, es decir 20 imagenes mas pequeñas de la original, genero demasiada informacion de una sola imagen, el dropout bota el 25% de la info para no evitar sobreajuste sobre cada observacion y termina siendo el 25% de todos los datos, por ultimo hacemos flatten es matriz a vector, y sacamos una capa de 10 de 10 simbolos que tenian</p>
+<p>otra cosa:</p>
+<p>tengo 10 variables de salida:</p>
+<p>si tenemos una sigmoide y un 1 parecido a 7 que van a activar de manera diferente las clases de 0 - 9:</p>
+<p>0.1
+0.9
+0.2
+0.15
+0.4
+0.1
+0.15
+0.8
+0.05
+0.3</p>
+<p>suma 1? no debe de sumar 1? no  bueno el solve de pytorch lo que hace es que hace que todo sume 1 cual valor tendrá valor mas alto? el del 1 entonces es 1 pero tambien se puede clasificar como 7 en logistica se coloca el treshold con 0.5 por ejemplo entonces estaria dos entradas una para 1 y otra para 7 pero con solve math tenemos una ponderacion de esto. hace como una normalizacion agarrando el maximo</p>
+<p>lab 3 comparar red de ese lab con una cnn una cnn con mlp:</p>
+<p>recordando parametros? capa 1 eran pixeles 784 y las egunda capa, supongamos 784 neuronas y tenemos 128 neuronas las fully conection newtorks conectaran entradas con neuronas entonces cuantos pesos tengo? 784 * 128 es decir para mlp tiene un montón de parametros, la idea con cnn es que con una fraccion de parametros tener el mismo rendimiento, es decir una fraccion por ejemplo 255 parametros</p>
+<p>ahora graficar matriz confusion multi algo? entonces el clasificador era perfecto? con esto se ve, por ejemplo esperar errores en 7-1 0-8, etc porque son numeros que se parecen entre ellos, entonces hay que graficar esta matriz de confusion , hay que concentrarse en los erroes, y decir porque? es decir intentar con intuicion porque se confunde.</p>
+</div>
+</div>
+</div>
+</div>
 </main>
 </body>
 </html>
