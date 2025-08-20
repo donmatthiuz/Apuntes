@@ -7868,6 +7868,52 @@ Es una versión de Adam que añade la aceleración de Nesterov, anticipando el p
 </div>
 </div>
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c59beae9">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="CLASE-18082025">CLASE 18082025<a class="anchor-link" href="#CLASE-18082025">¶</a></h1><h2 id="Redes-Convulusionales.">Redes Convulusionales.<a class="anchor-link" href="#Redes-Convulusionales.">¶</a></h2><p>La red anterior lo que piensa es que cada pixel es independiente, pero el humano no interperta asi , sigue los patrones de señas, coloroes, formas que al unirlas conforman la imagen de la idea.</p>
+<p>Lo que hacen las CNN es reducir a una imagen mas sencilla de entender lo que ve.</p>
+<p>Para lo que estas hechas es para tener datos de local y espacial. Que tienen un contexto y que sus variables tienen dirferentes valores en otros datos.</p>
+<p>Las redes captan una matriz y a a esa patriz le dan sentido en forma de patrones.</p>
+<p>Nuestra reed es la misma red que venimos trabajando anteriormente, la red proprocesa los datos de manera releavante, le pode un MLP comun y calcula por filtros.</p>
+<p>En el pipeline, de las capas de convulucion haecen que pierda informacion. Pero vamos a mantener la informacion mas importnate.</p>
+<h3 id="Pooling">Pooling<a class="anchor-link" href="#Pooling">¶</a></h3><p>Tiene un kernel que tiene una cantidad asignada en la matriz. A los numeros del kernel se le aplica una operacion , ya sea maxpoling que es calcular el maximo.
+La finalidad de las capas de pooling es reducir la info
+Lo que decidimos es si tener una capa de max o average.
+Estos son hiperparametros, cuidado ya que pueden hacer que pierdas informacion
+Esto sirve si queres reducir la cantidad de pxeles a analizar en una capa</p>
+<p>En las redes reales , tenemos mas info , porque tenemos un canal rojo, azul y verde Y debemos de encontrar variaciones entre todos los canales.</p>
+<h3 id="Capa-de-Dropout">Capa de Dropout<a class="anchor-link" href="#Capa-de-Dropout">¶</a></h3><p>El problema es que al aplicar los filtros genero mas imagenes de la original. Lo que hace el dropout evita el sobreajuste tirando aleatoriamente n % que tu eligas</p>
+<h3 id="Convertir-la-matriz">Convertir la matriz<a class="anchor-link" href="#Convertir-la-matriz">¶</a></h3><p>Convertimos la matriz a un vector</p>
+<h3 id="Red-Neuronal">Red Neuronal<a class="anchor-link" href="#Red-Neuronal">¶</a></h3><p>Luego aplicamos una red neuronal tipica. Softmax lo que hac es ponderar el numero entre las multiples variables que den 1 explicitamente para saber si va a ser un tipo de clasificacion o no .</p>
+<p>Si se hace esto 1 de las variables sera la respuesta ya que softmax obliga a que se tome la mas alta</p>
+<p>Una cosa interesante es que las CNN tienen menos parametros que una red normal.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=24accc84">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Resumen">Resumen<a class="anchor-link" href="#Resumen">¶</a></h2><p>Redes convolucionales (CNN):</p>
+<p>Buscan patrones cada vez más básicos.  Por ejemplo de una cara humana, la descompone en ojos, cara, boca, etc y cada parte de la cara la descompone en otras partes etc.</p>
+<p>Naturaleza local especial: tienen un contexto y alreadedor hay información de otras variables que me dan contexto de ese valor.</p>
+<p>Convolución: operación de matriz. Tenemos un kernel (una matriz) hacemos una combinación lineal con los valores de otra matriz para resumirlo todo en un solo valor.</p>
+<p>Nos pueden ayudar a encontrar los bordes de un objeto, los bordes indican cuando las cosas son y dejan de ser.</p>
+<p>La red calcula los valores ideales de los kernel.</p>
+<p>Pooling: información que resume la información de una región reduciendo su tamaño lo que ayuda a reducir la complejidad del modelo y lo hace más robusto a pequeñas variaciones o traslaciones en los datos.</p>
+<p>Aplicamos n filtros(es un hiperparámetro) este encuentra patrones, luego aplica pooling y volvemos a aplicar convolución con los filtros, cada vez podemnos ir encontrando patrones más complejos.</p>
+<p>Softmax: pondera todos los valores y elige el más alto.</p>
+</div>
+</div>
+</div>
+</div>
 </main>
 </body>
 </html>

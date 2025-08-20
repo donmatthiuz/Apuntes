@@ -7698,6 +7698,86 @@ if t3 &lt; v goto L
 </div>
 </div>
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=479676a5">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="Clase-18082025">Clase 18082025<a class="anchor-link" href="#Clase-18082025">¶</a></h1><p>La logica de nuestro codigo original , debe de preservar en el codigo de 3 direcciones el significado semantico del lenguaje osea mantener la misma funcionalidad.</p>
+<h3 id="Llama-a-procedimiento--o-funcion">Llama a procedimiento  o funcion<a class="anchor-link" href="#Llama-a-procedimiento--o-funcion">¶</a></h3><pre><code>param x1
+param x2
+param x3
+....
+param xn
+
+call p, n
+y = p + n
+return y
+</code></pre>
+<p>Supongamos que tenemos un archivo de texto plano con nuestro codigo de 3 direcciones. La dificultad es que tenemos que hacer un lexer y parser para leer el codigo, y se hacen pasos adicionales. Para recuperar la info. Este es un desafio innecesario</p>
+<p>Lo que debemos de hacer es guardarlo en una estructura de datos . Si lo hacemos en una estructura de datos nos hes posible recuperar la informacion en Ram simplemente accediendo a partes especificas.</p>
+<p>Ahora guardarlo no hay problema, porque el SO se encarga de guardar en disco si excede la RAM</p>
+<p>Es mejor idea usar tripletas si no voy a optimizar, si voy a usar cuadruplos mejor usalo antes</p>
+<h2 id="Entornos-en-tiempo-de-ejecucion">Entornos en tiempo de ejecucion<a class="anchor-link" href="#Entornos-en-tiempo-de-ejecucion">¶</a></h2><p>Si te acuerdas en assembly no hay ambitos, como manejo clases , paradigmas  e interfaces, lllamadas a funciones complejas en un lenguaje donde no hay valores de retorno.</p>
+<p>Pero siempre respetando lo del significado semantico del lenguaje.
+Osea como convierto cosas complejas de alto nivel a cosas simples de bajo nivel.
+Todos los conceptos que definimos de cosas complejas realmente son abstraidos.</p>
+<h2 id="Abstraccion">Abstraccion<a class="anchor-link" href="#Abstraccion">¶</a></h2><p>Es aislar conceptualmente propiedades de un objeto.   Y la definicion de informatica es aislar fuera de su contexto.</p>
+<p>Para entender como se implementan los conceptos, vamos a ver como se subdivide la memoria. Para que se pueda ejectuar el codigo , el compilador crea un entorno en tiempo de ejecucion, en donde asigna las direcciones de memoria.</p>
+<p>Ya vimos que desde la perspectiva del compilador, nos vamos a enfocar en direcciones logicas y que son contiguas. No vamos a caer en la complejidad de donde lo guardo, sino que vamos a asumir que nuestro compilador maneja un nivel de abstraccion.  Entonces las referencias a direcciones fisicas no hay , talvez si en cierto punto pero mas que todo direcciones logicas.</p>
+<p>Otra cosa que vamos a asumir, pero eso depende del procesador. Pero vamos a sumir con procesadores de 32 bits</p>
+<h2 id="Memoria-y-su-uso">Memoria y su uso<a class="anchor-link" href="#Memoria-y-su-uso">¶</a></h2><ul>
+<li>Codigo: Es algo logico nada mas, ir a  colocar el codigo ensamblador que vamos a ejecutar cuando el programa vaya a correr. Lo vamos guardar en ram nuestro codigo de ensamblador. Podemos identificar de que tama;o nos quedo el codigo ensamblador.</li>
+<li>Datos estaticos : Cuando lleguemos a tener datos estaticos, en donde tengamos datos globales, que le servira de utilidad al garbage collector. Podemos saber a ciencia cierta que tama;o de ram se necesita para guardar que datos son estaticos.</li>
+</ul>
+<hr/>
+<h3 id="Areas-Dinamicas">Areas Dinamicas<a class="anchor-link" href="#Areas-Dinamicas">¶</a></h3><p>Si la pila crece el espacio de monticulo se reduce y la pila, si el monticulo crece la memoria libre se reduce. Y la pila crece tambien se reduce la memoria libre</p>
+<ul>
+<li>Monticulo: Asignar y desasignar datos , pero dado por el programador. Un ejemplo es C y el uso de malloc.</li>
+<li>Pila :  Llamadas a procedimientos.</li>
+</ul>
+<p>Como se sabe cuanto debo de reservar de ram para una variable.</p>
+<p>En el monticulo si necesita mas memoria va pidiendo mas memoria libre. Si hacemos mal uso del monticulo tendremos programas ineficientes</p>
+<h3 id="Estatico-y-Dinamico">Estatico y Dinamico<a class="anchor-link" href="#Estatico-y-Dinamico">¶</a></h3><p>La idea que cuando hablamos de algo dinamico es como se maneja la memoria en tiempo de ejecucion, y estatico es memoria en tiempo de ejecucion. Ahora el problema es que tendremos cosas llamadas iguales pero estaran guardadas en lugares distintos</p>
+<h3 id="Jerarquia-de-memoria">Jerarquia de memoria<a class="anchor-link" href="#Jerarquia-de-memoria">¶</a></h3><p>La memoria tiene una caracteristica, la que es pque;a es rapida, la pe;a es cara y la grande es mas barata.</p>
+<ul>
+<li>Registros guardan 32 palabras. La ventaja es que lo jalamos en 1 ns</li>
+<li>La cache es el 2do nivel, 16kb hasta 64kb. 5 a 10 ns</li>
+<li>La cache L2, es 128kb a 4MB  40 a 60 ns</li>
+<li>La ram podemos guardar hasta 2GB  osea 100ns a 150ns</li>
+<li>El siguiente almacenamiento es Memoria Virtual 3ms a 15 ms y mas de 200 GB</li>
+</ul>
+<p>Lo que debemos de optimizar es el acceso a memoria. Otra cosa que es bien importante, es que podemos usar el procesador que utilice los registros. Lo que va a hacer el procesador es utiliza cache , sino ram y sino a memoria virtual.</p>
+<p>Lo unico que le podemos decir es que utilice registros o memoria</p>
+<p>Lo que no existe es que exista almacenamiento rapido y grande .</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=7f0787e1">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Existen algunos fenomenos, como localidad temporal si las ubicaciones de memoria que las accede las volvera a acceder en corto tiempo.</p>
+<p>Localidad espacial es que vuelva a utilizar localidades cercanas</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d8fb8fa7">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Heap">Heap<a class="anchor-link" href="#Heap">¶</a></h3><p>Objetos podemos guardarlos en el monticulo o heap.</p>
+</div>
+</div>
+</div>
+</div>
 </main>
 </body>
 </html>
