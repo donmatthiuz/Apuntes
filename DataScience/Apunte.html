@@ -7819,6 +7819,114 @@ Tiene funciones de hadoop. En 3 discos duros diferentes que pasa con sark es que
 </div>
 </div>
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=26612e27">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Clase-29092025">Clase 29092025<a class="anchor-link" href="#Clase-29092025">¶</a></h2><p>SPARCK SQL</p>
+<p>Esta montado sobre sql apache.Una ventaja es que utiliza cache osea es mas rapido que sql. Optimiza por si solala forma mas rapida de hacer las consultasporque los joins se hacen con ram.</p>
+<p>Esta integrados los dataframes y otras estructuras de datos.</p>
+<p>Compatible con python y pyspark .</p>
+<p>El dataframe en sparck es distribuido.</p>
+<p>Esta construido de RDD que son inmutables. Como no los puedo cambiar cada vez que hago una transformacion en RDD no los puedo cambiar.</p>
+<p>Es facil de ver y es compatible con multiples fuentes de datos</p>
+<p>Lo prmero que haciamos es importar pyspark y crear una sesion</p>
+<p>COmo se crea un datframe en spark , tengo que leer en una fuente y convertilo a un dataframe.</p>
+<p>Lo primero que se hace es</p>
+<ul>
+<li><p>spark sesion</p>
+</li>
+<li><p>sql querys.</p>
+</li>
+<li><p>Spark sql procesa los datos estructurados. Me da informacion de la estructura y coo las transformaciones. Internamente usa RDDs con algunas funciones utilizadas</p>
+</li>
+<li><p>Dataset Dataframes es una interfaz que me permite usar spark sql . Lo que yo puedo usar para estas transformaciones de mi tabla</p>
+</li>
+</ul>
+<p><em>Los comandos aqui estan</em></p>
+<hr/>
+<h2 id="%F0%9F%94%B9-Spark-SQL-(usando-spark.sql)">🔹 Spark SQL (usando <code>spark.sql</code>)<a class="anchor-link" href="#%F0%9F%94%B9-Spark-SQL-(usando-spark.sql)">¶</a></h2><div class="highlight"><pre><span></span><span class="c1"># Seleccionar todo con límite</span>
+<span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">"SELECT * FROM personas LIMIT 5"</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Seleccionar columnas específicas</span>
+<span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">"SELECT id, nombre FROM personas LIMIT 3"</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Contar filas</span>
+<span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">"SELECT COUNT(*) AS total FROM personas"</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Distintos valores</span>
+<span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">"SELECT DISTINCT edad FROM personas"</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Renombrar columna</span>
+<span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">"SELECT nombre AS persona, edad FROM personas"</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Orden descendente con límite</span>
+<span class="n">spark</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">"SELECT * FROM personas ORDER BY edad DESC LIMIT 2"</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+<hr/>
+<h2 id="%F0%9F%94%B9-API-de-DataFrames">🔹 API de DataFrames<a class="anchor-link" href="#%F0%9F%94%B9-API-de-DataFrames">¶</a></h2><div class="highlight"><pre><span></span><span class="c1"># Mostrar primeras filas (equivalente a LIMIT)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Seleccionar columnas</span>
+<span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">"id"</span><span class="p">,</span> <span class="s2">"nombre"</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Filtro con condición</span>
+<span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">edad</span> <span class="o">&gt;</span> <span class="mi">25</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Distintos valores</span>
+<span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">"edad"</span><span class="p">)</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Contar filas</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>
+
+<span class="c1"># Orden descendente con límite</span>
+<span class="n">df</span><span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">edad</span><span class="o">.</span><span class="n">desc</span><span class="p">())</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Renombrar columna</span>
+<span class="n">df</span><span class="o">.</span><span class="n">withColumnRenamed</span><span class="p">(</span><span class="s2">"nombre"</span><span class="p">,</span> <span class="s2">"persona"</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+<hr/>
+<h2 id="%F0%9F%94%B9-Otras-utilidades-de-DataFrame">🔹 Otras utilidades de DataFrame<a class="anchor-link" href="#%F0%9F%94%B9-Otras-utilidades-de-DataFrame">¶</a></h2><div class="highlight"><pre><span></span><span class="c1"># Ver esquema de la tabla</span>
+<span class="n">df</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
+
+<span class="c1"># Ver tipos y metadata</span>
+<span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
+
+<span class="c1"># Describir estadísticas básicas</span>
+<span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Tomar las primeras filas como objetos Row</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># Recoger todo en una lista (¡cuidado con data grande!)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+</pre></div>
+<hr/>
+<p>Y en sql dataframes y datasets</p>
+<div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Seleccionar</span> <span class="n">columnas</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">"nombre"</span><span class="p">,</span> <span class="s2">"edad"</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="o">//</span> <span class="n">Filtro</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="err">$</span><span class="s2">"edad"</span> <span class="o">&gt;</span> <span class="mi">25</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="o">//</span> <span class="n">Orden</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="err">$</span><span class="s2">"edad"</span><span class="o">.</span><span class="n">desc</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="o">//</span> <span class="n">Limit</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="o">//</span> <span class="n">Distinct</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">"edad"</span><span class="p">)</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="o">//</span> <span class="n">Agregaciones</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s2">"edad"</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 </main>
 </body>
 </html>
