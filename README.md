@@ -9,3 +9,5 @@
 [Ciencia de Datos](https://donmatthiuz.github.io/Apuntes/DataScience/Apunte)
 
 [Compiladores](https://donmatthiuz.github.io/Apuntes/Compiladores/Apunte)
+
+[Paralela](https://donmatthiuz.github.io/Apuntes/Paralela/Apunte)
