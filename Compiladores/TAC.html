@@ -7704,6 +7704,74 @@ param z</p>
 </tr>
 </tbody>
 </table>
+<h3 id="Ahora-para-validar-vemos">Ahora para validar vemos<a class="anchor-link" href="#Ahora-para-validar-vemos">¶</a></h3><p>Sustituyendo valores:</p>
+<pre><code>T1 = 2 * 4 = 8
+T2 = 3 * 4 = 12
+T3 = 4 + 3 = 7
+T4 = T1 + T2 = 8 + 12 = 20
+T5 = T4 - T3 = 20 - 7 = 13
+</code></pre>
+<p>Resultado del código original: <strong>13</strong></p>
+<hr/>
+<p>Recordemos los triplos:</p>
+<table>
+<thead>
+<tr>
+<th>Op</th>
+<th>Arg1</th>
+<th>Arg2</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>*</td>
+<td>x</td>
+<td>z</td>
+<td>→ T1</td>
+</tr>
+<tr>
+<td>*</td>
+<td>y</td>
+<td>z</td>
+<td>→ T2</td>
+</tr>
+<tr>
+<td>+</td>
+<td>z</td>
+<td>y</td>
+<td>→ T3</td>
+</tr>
+<tr>
+<td>+</td>
+<td>(0)</td>
+<td>(1)</td>
+<td>→ T4</td>
+</tr>
+<tr>
+<td>-</td>
+<td>(3)</td>
+<td>(2)</td>
+<td>→ T5</td>
+</tr>
+<tr>
+<td>return</td>
+<td>(4)</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Paso a paso:</p>
+<ol>
+<li><code>(0)</code> → <code>* x z</code> → <code>2 * 4 = 8</code> → T1</li>
+<li><code>(1)</code> → <code>* y z</code> → <code>3 * 4 = 12</code> → T2</li>
+<li><code>(2)</code> → <code>+ z y</code> → <code>4 + 3 = 7</code> → T3</li>
+<li><code>(3)</code> → <code>+ (0) (1)</code> → <code>8 + 12 = 20</code> → T4</li>
+<li><code>(4)</code> → <code>- (3) (2)</code> → <code>20 - 7 = 13</code> → T5</li>
+<li><code>return (4)</code> → <strong>13</strong></li>
+</ol>
+<p>Lo cual al tener valores iguales, vemos que si es el valor correcto</p>
 </div>
 </div>
 </div>
