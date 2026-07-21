@@ -7829,6 +7829,81 @@ a.anchor-link {
 </div>
 </div>
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9038f43f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="CLASE-16-DE-JULIO">CLASE 16 DE JULIO<a class="anchor-link" href="#CLASE-16-DE-JULIO">¶</a></h1><ul>
+<li>Documento: Unidad individual de un corpus</li>
+<li>Corpus: Coleccion de textos</li>
+<li>Oracion: Segmento linguistico ocn cierta unidad semantica</li>
+<li>Token: Unidad minima que el sistema procesara</li>
+<li>Vocabulario: Conjunto de tokens conocidos</li>
+<li>Tokenizador: Algoritmo que convierte texto en tokens.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f52b6629">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Un token:</p>
+<p>Un sigono, una palabra, un numero , un caracter, un signo , una subpalabra un simbolo especial.</p>
+<h2 id="Actividad-Corta:">Actividad Corta:<a class="anchor-link" href="#Actividad-Corta:">¶</a></h2><p>Hola!!! Mi correo es ana.lopez@uvg.edu.gt y necesito ayuda urgente:</p>
+<ul>
+<li><p>El emogi se puede llegar a quitar porque ya existe lo demas que demuestra que es urgente.</p>
+</li>
+<li><p>Tokenizacion clasica</p>
+</li>
+</ul>
+<p>Solo se hacia el split xd .  La ventaja es que es facil de entender y para tareas simples, las limitaciones es que no majea bien la puntuación, faltan con correos , urls o amogis, no resuelve palabras desconocidas.</p>
+<h3 id="Regex">Regex<a class="anchor-link" href="#Regex">¶</a></h3><p>Con esta lo hacemos con regex. Asi encontramos patrones.</p>
+<h3 id="Normalizacion">Normalizacion<a class="anchor-link" href="#Normalizacion">¶</a></h3><p>Convertir minusculas, quitar espacios, unificar saltos, remover caracteres invisibles, estandarizar comillas o simbolos.</p>
+<h2 id="Poruqe-importa-la-tokenizacion">Poruqe importa la tokenizacion<a class="anchor-link" href="#Poruqe-importa-la-tokenizacion">¶</a></h2><p>El costo de uso de apis
+El limite de contexto.
+El trato de idiomas distintos al ingles.
+La representación de pas raras
+La exposicion accidental.</p>
+<h2 id="Pregunta-de-discusion">Pregunta de discusion<a class="anchor-link" href="#Pregunta-de-discusion">¶</a></h2><p>Si vamos a detectar datos sensibles nos conviene tokenizar antes o despues de detectar esot.</p>
+<p>La mejor estrategia es mejor hacerlo antes, porque asi lo evitamos desde antes de evitar que llegue algo</p>
+<p>El preprocesamiento como pipeline</p>
+<ul>
+<li>Entrada de usuario</li>
+<li>Normalizacion minima</li>
+<li>Deteccion de datos sensibles</li>
+<li>Accion de gardrails</li>
+<li>Tokenizacion</li>
+<li>Estadisticas</li>
+<li>Salida al modelo o bloqueo</li>
+</ul>
+<h2 id="Guardrail">Guardrail<a class="anchor-link" href="#Guardrail">¶</a></h2><p>Es una capa de control que reduce riesgos antes o despues de usar un modelo sirve para</p>
+<p>bloquear entradas
+redactar datos sensibles
+advertir al usuario
+validar formato de salida
+evitar fuga de informacion
+reducir prompt inyection</p>
+<h2 id="Regex-porque-usar">Regex porque usar<a class="anchor-link" href="#Regex-porque-usar">¶</a></h2><p>Entender patrones complicados</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=97e74db4">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div>
 </main>
 </body>
 </html>
