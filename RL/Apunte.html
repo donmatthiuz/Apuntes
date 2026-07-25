@@ -8084,6 +8084,95 @@ R: recompensa</p>
 </div>
 </div>
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d016499a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="CLASE-21-DE-JULIO">CLASE 21 DE JULIO<a class="anchor-link" href="#CLASE-21-DE-JULIO">¶</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6305ae75">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="MARKOV-DESICION-PROCESS.">MARKOV DESICION PROCESS.<a class="anchor-link" href="#MARKOV-DESICION-PROCESS.">¶</a></h2><p>Como se que es tomar una buena desición:</p>
+<p>Limitaciones del bandidos:</p>
+<p>El gbandido cada accion es independiente, no hay estado que cambie.
+Un MDP es una tupla (S,A,p,r,y)</p>
+<p>Esta conformada por 5 objetos, primero S es el espacio de estados.</p>
+<p>A espacio de acciones</p>
+<p>p(s', | s, a) funcion de transicion, propbabilidad de llegar al siguiente estado o s' tomado a.</p>
+<p>r(s,a,s') funcion de recompensa esperada.</p>
+<p>Esta función de recompensa es la seññal de diseño que tiene una función de origen y estado destino.</p>
+<p>Y finalmente tenemos la propiedad que le da nombre la modelo que es el factor de descuento:</p>
+<p>y pertenece a [0,1) factos de descuento</p>
+<p>Depende del estado actual y la acción que tomo , NO DEPENDE DEL HISTORIAL SINO DEL ESTADO ACTUAL Y LA SIGUIEINTEE. TIENE EL SUFICIENTE CONTEXTO PARA ENTENDER QUE LA ACCION ACTUAL ES EL HISTORIAL COMO TAL.</p>
+<p>El estado actual contiene la onfirmacion relevante del pasado.</p>
+<p>No necesitamos guardar el pasado sino solo el presente .</p>
+<p>Si la propieda falla : el estado mal definido , no el mundo .</p>
+<p>Diseñar buen estado es diseñar buena representación.</p>
+<p>La propiedad de markov es en cierto sentido la versión de ese sistema.</p>
+<p>La tarea mas importante es :"MI REPRESENTACION DE ESTADO CAPTURA TODO PARA QUE LA APROXIMACIÓN DE MARKOV SE APROXIME RAZONABLEMENTE. "</p>
+<p>La politica es pi (a | s) probaibilidad de tomar a en el estado s</p>
+<p>Funcion de valor de estado : Y sigo la politica que tengo definida de aqui a la eternidad, cuanto retorno acumulare, es una medida que tan buena es una situación bajo una politica dada</p>
+<p>Funcion de accion: La segunda es la politica de vida ya esta definida como es la anterior. Y la diferencia de la segunda es que fuerzo la primera acción, osea es empezar entregando algo al inicio y luego tomar la politica de manera individual</p>
+<p>El problema del RL , es secontrar la potlica optima en el setido que de el mayor retorno esperado. La politica optima es decir que ahorita tomo la mejor acción y las siguientes en algun punto tomando buenas acciones encontrare la mejor de todas .</p>
+<p>Alemnos existe una politica deterministica optima .</p>
+<h2 id="ECUACION-BELLMAN-PARA-Vpi">ECUACION BELLMAN PARA Vpi<a class="anchor-link" href="#ECUACION-BELLMAN-PARA-Vpi">¶</a></h2><p>Cada algoritmo en este curso , es en escencia una forma de aproximar esta ecuación. El lado izquierdo lo que nos dice b de pi de s. Es el valor esperado</p>
+<p>**BELLMAN EVALUA }QUE TAN BUENO ES ESTE ESTADO CONSIDERANDO LAS POSIBILIDADES SIGUIENTES. **</p>
+<p>Es una forma que tratamos de destilar el futuro completo en un numero.</p>
+<p>SE LE NOMBRE PRINCIPIO DE OPTIMALIDAD, Eso quiere decir que respecto al estado actual y el anterior siempre elegir la politica optima.</p>
+<p>Si te refieres a <strong>Procesos de Decisión de Markov (MDP)</strong> y <strong>Aprendizaje por Refuerzo</strong>, la respuesta es la siguiente:</p>
+<h3 id="%C2%BFCu%C3%A1l-es-el-valor-m%C3%A1ximo-que-podemos-extraer-independientemente-de-la-pol%C3%ADtica?">¿Cuál es el valor máximo que podemos extraer independientemente de la política?<a class="anchor-link" href="#%C2%BFCu%C3%A1l-es-el-valor-m%C3%A1ximo-que-podemos-extraer-independientemente-de-la-pol%C3%ADtica?">¶</a></h3><p>El valor máximo que podemos obtener de un estado es el que proporciona la <strong>política óptima</strong>. Este valor se representa mediante la <strong>función de valor óptima</strong>, la cual indica la mayor recompensa esperada que puede alcanzarse desde un estado determinado.</p>
+<p>La función de valor óptima se define como:</p>
+<p>$$
+V^*(s)=\max_{\pi} V^{\pi}(s)
+$$</p>
+<p>donde:</p>
+<ul>
+<li>(V^*(s)): valor óptimo del estado (s).</li>
+<li>(\pi): cualquier política posible.</li>
+<li>(V^{\pi}(s)): valor del estado (s) al seguir la política (\pi).</li>
+</ul>
+<p>Esto significa que, entre todas las políticas posibles, se selecciona aquella que produce la mayor recompensa esperada.</p>
+<hr/>
+<h2 id="La-ecuaci%C3%B3n-de-optimalidad-de-valor-(Ecuaci%C3%B3n-de-Bellman)">La ecuación de optimalidad de valor (Ecuación de Bellman)<a class="anchor-link" href="#La-ecuaci%C3%B3n-de-optimalidad-de-valor-(Ecuaci%C3%B3n-de-Bellman)">¶</a></h2><p>La ecuación de Bellman para la función de valor óptima es:</p>
+<p>$$
+V^*(s)=\max_{a}\sum_{s',r} p(s',r \mid s,a)\left[r+\gamma V^*(s')\right]
+$$</p>
+<h3 id="Explicaci%C3%B3n-de-la-ecuaci%C3%B3n">Explicación de la ecuación<a class="anchor-link" href="#Explicaci%C3%B3n-de-la-ecuaci%C3%B3n">¶</a></h3><p>Esta ecuación indica que el valor óptimo de un estado es igual a la <strong>mejor acción posible</strong> que puede realizar el agente, considerando:</p>
+<ul>
+<li>$$\max_a$$: selecciona la acción que maximiza la recompensa esperada.</li>
+<li>$$p(s',r \mid s,a)$$: probabilidad de llegar al estado (s') y recibir la recompensa (r) al ejecutar la acción (a) desde el estado (s).</li>
+<li>$$r$$: recompensa inmediata obtenida después de realizar la acción.</li>
+<li>$$\gamma$$: factor de descuento, con (0 \leq \gamma \leq 1), que determina cuánto se valoran las recompensas futuras.</li>
+<li>$$V^*(s')$$: valor óptimo del siguiente estado.</li>
+</ul>
+<p>En otras palabras, la ecuación evalúa todas las acciones disponibles, calcula la recompensa inmediata más el valor futuro descontado para cada una y elige la acción que proporciona el mayor valor esperado.</p>
+<hr/>
+<p>También puede expresarse mediante la función de acción-valor óptima:</p>
+<p>$$
+Q^*(s,a)=\sum_{s',r} p(s',r \mid s,a)\left[r+\gamma \max_{a'}Q^*(s',a')\right]
+$$</p>
+<p>donde:</p>
+<ul>
+<li>$$Q^*(s,a)$$ representa el valor óptimo de ejecutar la acción (a) en el estado (s).</li>
+<li>$$\max_{a'}Q^*(s',a')$$ corresponde al mejor valor que puede obtenerse en el siguiente estado. Esta formulación es la base de algoritmos como <strong>Q-Learning</strong>.</li>
+</ul>
+<p>La ecuación optima de q es mas directa. Si conozco el Q* que es el q optimo, la politica actual es la que mejor se encontrara. La acción que se maximiza Q sirve para saber la función en la cual puedo actuar.</p>
+<p>La diferencia entre ecuaciones de evaluación y optimalidad es el maximo. Ese operador rompe con la linealidad del sistema. Necesitamos metodos iterativos para converger al analisis que necesitamos.</p>
+<p>La ecuación asume que la gente toma mejor las acciones desde el momoento actual en adelante.</p>
+<p>Ejemplo resuelto : Grid World</p>
+</div>
+</div>
+</div>
+</div>
 </main>
 </body>
 </html>
